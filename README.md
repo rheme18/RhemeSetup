@@ -2,7 +2,7 @@
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6.svg)
-![Architecture](https://img.shields.io/badge/architecture-HTA%20%7C%20ActiveX%20%7C%20WScript-orange.svg)
+![Architecture](https://img.shields.io/badge/architecture-Electron%20%7C%20Node.js%20%7C%20PowerShell-blue.svg)
 ![Backend](https://img.shields.io/badge/backend-winget%20%7C%20PowerShell-blueviolet.svg)
 
 **RhemeSetup**, Windows'u sıfırdan kurduktan sonra ihtiyaç duyulan uygulama indirme, sistemde yüklü gereksiz yazılımları kaldırma ve performans optimizasyonu işlemlerini tek bir modern, koyu temalı arayüzde birleştiren **tamamen .HTA (HTML Application) tabanlı, kurulum gerektirmeyen (portable)** bir sistem yöneticisi aracıdır.
