@@ -1,0 +1,30 @@
+{
+  "name": "rhemesetup",
+  "version": "1.0.0",
+  "description": "Profesyonel Format Sonrası Kurulum ve Sistem Optimizasyon Aracı",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "author": "Emir Aras Koç",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.rheme.setup",
+    "productName": "RhemeSetup",
+    "win": {
+      "target": "portable",
+      "icon": "app-icon.ico",
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "portable": {
+      "artifactName": "RhemeSetup-v${version}-Portable.exe",
+      "requestExecutionLevel": "admin"
+    }
+  }
+}

@@ -1,0 +1,283 @@
+[2026-07-19T08:09:26.272Z] KOMUT: where winget
+STDOUT: C:\Users\emira\AppData\Local\Microsoft\WindowsApps\winget.exe
+
+STDERR: 
+
+[2026-07-19T08:09:31.282Z] KOMUT: wmic product get name
+STDOUT: Name                                                            
+Python 3.12.3 Core Interpreter (64-bit)                         
+Python 3.12.3 Tcl/Tk Support (64-bit)                           
+Python 3.12.3 Standard Library (64-bit)                         
+Python 3.12.3 pip Bootstrap (64-bit)                            
+Python Launcher                                                 
+Python 3.12.3 Development Libraries (64-bit)                    
+Python 3.12.3 Executables (64-bit)                              
+Python 3.12.3 Test Suite (64-bit)                               
+Python 3.12.3 Documentation (64-bit)                            
+Python 3.12.3 Add to Path (64-bit)                              
+AMD WVR64                                                       
+Update for Windows 10 for x64-based Systems (KB5001716)         
+Node.js                                                         
+Microsoft Visual C++ 2019 X64 Additional Runtime - 14.29.30133  
+AMD Settings                                                    
+AMD DVR64                                                       
+Microsoft Visual C++ 2019 X64 Minimum Runtime - 14.29.30133     
+Branding64                                                      
+
+
+STDERR: 
+
+[2026-07-19T08:09:31.782Z] KOMUT: systeminfo | findstr /B /C:"OS Name"
+STDOUT: OS Name:                   Microsoft Windows 10 Home Single Language
+
+STDERR: 
+
+[2026-07-19T08:10:26.479Z] KOMUT: winget install --id "7zip.7zip" --silent --accept-source-agreements --accept-package-agreements
+STDOUT: Found 7-Zip [7zip.7zip] Version 26.02
+This application is licensed to you by its owner.
+Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Downloading https://github.com/ip7z/7zip/releases/download/26.02/7z2602-x64.exe
+Successfully verified installer hash
+Starting package install...
+The installer will request to run as administrator. Expect a prompt.
+An unexpected error occurred while executing the command: 
+0x800704c7 : ��lem kullan�c� taraf�ndan iptal edildi.
+
+STDERR: 
+
+[2026-07-19T09:26:10.309Z] [WARNING] electron-updater yüklenmemiş veya yüklenirken hata oluştu: Cannot find module 'electron-updater'
+Require stack:
+- C:\Users\emira\Desktop\RhemeSetup-v5\main.js
+[2026-07-19T09:26:10.797Z] [INFO] RhemeSetup Başlatıldı.
+[2026-07-19T09:28:18.534Z] [SUCCESS] "Temel Kullanıcı Paketi" başarıyla seçildi!
+[2026-07-19T09:28:36.231Z] [INFO] Sistem Analizi (Quick Scan) başlatılıyor...
+[2026-07-19T09:28:36.232Z] [COMMAND] Sistem Komutu Tetiklendi: winget list --id "Microsoft.VCRedist.2015+.x64"
+[2026-07-19T09:28:42.876Z] [SUCCESS] BAŞARILI - Komut: winget list --id "Microsoft.VCRedist.2015+.x64"
+[2026-07-19T09:28:42.878Z] [SUCCESS] [YÜKLÜ] Visual C++ 2015-2022 Redistributable (x64) sistemde bulundu.
+[2026-07-19T09:28:42.879Z] [COMMAND] Sistem Komutu Tetiklendi: winget list --id "Microsoft.VCRedist.2015+.x86"
+[2026-07-19T09:28:44.371Z] [ERROR] HATA - Komut: winget list --id "Microsoft.VCRedist.2015+.x86" | Sebep: Command failed: winget list --id "Microsoft.VCRedist.2015+.x86"
+
+[2026-07-19T09:28:44.376Z] [WARNING] [EKSİK] Visual C++ 2015-2022 Redistributable (x86) sistemde bulunamadı!
+[2026-07-19T09:28:44.377Z] [COMMAND] Sistem Komutu Tetiklendi: winget list --id "Microsoft.DotNet.DesktopRuntime.8"
+[2026-07-19T09:28:45.946Z] [ERROR] HATA - Komut: winget list --id "Microsoft.DotNet.DesktopRuntime.8" | Sebep: Command failed: winget list --id "Microsoft.DotNet.DesktopRuntime.8"
+
+[2026-07-19T09:28:45.948Z] [WARNING] [EKSİK] .NET Desktop Runtime 8.0 (x64) sistemde bulunamadı!
+[2026-07-19T09:28:45.949Z] [COMMAND] Sistem Komutu Tetiklendi: winget list --id "Microsoft.DotNet.DesktopRuntime.6"
+[2026-07-19T09:28:47.515Z] [ERROR] HATA - Komut: winget list --id "Microsoft.DotNet.DesktopRuntime.6" | Sebep: Command failed: winget list --id "Microsoft.DotNet.DesktopRuntime.6"
+
+[2026-07-19T09:28:47.517Z] [WARNING] [EKSİK] .NET Desktop Runtime 6.0 (x64) sistemde bulunamadı!
+[2026-07-19T09:28:47.518Z] [COMMAND] Sistem Komutu Tetiklendi: winget list --id "Microsoft.DirectX"
+[2026-07-19T09:28:49.321Z] [ERROR] HATA - Komut: winget list --id "Microsoft.DirectX" | Sebep: Command failed: winget list --id "Microsoft.DirectX"
+
+[2026-07-19T09:28:49.324Z] [WARNING] [EKSİK] DirectX Runtime Kütüphaneleri sistemde bulunamadı!
+[2026-07-19T09:28:49.325Z] [SUCCESS] Sistem Analizi tamamlandı.
+[2026-07-19T09:28:49.610Z] [INFO] Geçici dosyalar temizleniyor...
+[2026-07-19T09:28:49.611Z] [INFO] İşlem başlatılıyor: powershell -Command "Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path C:\Windows\Temp\* -Recurse -Force -ErrorAction SilentlyContinue"
+[2026-07-19T09:28:49.611Z] [COMMAND] Sistem Komutu Tetiklendi: powershell -Command "Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path C:\Windows\Temp\* -Recurse -Force -ErrorAction SilentlyContinue"
+[2026-07-19T09:28:51.561Z] [INFO] Geçici dosyalar temizleniyor...
+[2026-07-19T09:28:51.562Z] [INFO] İşlem başlatılıyor: powershell -Command "Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path C:\Windows\Temp\* -Recurse -Force -ErrorAction SilentlyContinue"
+[2026-07-19T09:28:51.562Z] [COMMAND] Sistem Komutu Tetiklendi: powershell -Command "Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path C:\Windows\Temp\* -Recurse -Force -ErrorAction SilentlyContinue"
+[2026-07-19T09:28:52.289Z] [INFO] Geçici dosyalar temizleniyor...
+[2026-07-19T09:28:52.291Z] [INFO] İşlem başlatılıyor: powershell -Command "Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path C:\Windows\Temp\* -Recurse -Force -ErrorAction SilentlyContinue"
+[2026-07-19T09:28:52.292Z] [COMMAND] Sistem Komutu Tetiklendi: powershell -Command "Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path C:\Windows\Temp\* -Recurse -Force -ErrorAction SilentlyContinue"
+[2026-07-19T09:28:54.386Z] [INFO] İşlem başlatılıyor: taskmgr
+[2026-07-19T09:28:54.387Z] [COMMAND] Sistem Komutu Tetiklendi: taskmgr
+[2026-07-19T09:28:55.796Z] [SUCCESS] BAŞARILI - Komut: powershell -Command "Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path C:\Windows\Temp\* -Recurse -Force -ErrorAction SilentlyContinue"
+[2026-07-19T09:28:55.798Z] [SUCCESS] Geçici sistem dosyaları başarıyla temizlendi.
+[2026-07-19T09:28:56.985Z] [INFO] İşlem başlatılıyor: taskmgr
+[2026-07-19T09:28:56.986Z] [COMMAND] Sistem Komutu Tetiklendi: taskmgr
+[2026-07-19T09:28:58.248Z] [SUCCESS] BAŞARILI - Komut: powershell -Command "Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path C:\Windows\Temp\* -Recurse -Force -ErrorAction SilentlyContinue"
+[2026-07-19T09:28:58.252Z] [SUCCESS] Geçici sistem dosyaları başarıyla temizlendi.
+[2026-07-19T09:28:58.916Z] [SUCCESS] BAŞARILI - Komut: taskmgr
+[2026-07-19T09:28:58.918Z] [SUCCESS] Görev Yöneticisi başlatıldı.
+[2026-07-19T09:28:59.111Z] [SUCCESS] BAŞARILI - Komut: powershell -Command "Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path C:\Windows\Temp\* -Recurse -Force -ErrorAction SilentlyContinue"
+[2026-07-19T09:28:59.113Z] [SUCCESS] Geçici sistem dosyaları başarıyla temizlendi.
+[2026-07-19T09:29:00.161Z] [SUCCESS] BAŞARILI - Komut: taskmgr
+[2026-07-19T09:29:00.164Z] [SUCCESS] Görev Yöneticisi başlatıldı.
+[2026-07-19T09:29:01.241Z] [INFO] Geçici dosyalar temizleniyor...
+[2026-07-19T09:29:01.242Z] [INFO] İşlem başlatılıyor: powershell -Command "Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path C:\Windows\Temp\* -Recurse -Force -ErrorAction SilentlyContinue"
+[2026-07-19T09:29:01.243Z] [COMMAND] Sistem Komutu Tetiklendi: powershell -Command "Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path C:\Windows\Temp\* -Recurse -Force -ErrorAction SilentlyContinue"
+[2026-07-19T09:29:03.697Z] [SUCCESS] BAŞARILI - Komut: powershell -Command "Remove-Item -Path $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path C:\Windows\Temp\* -Recurse -Force -ErrorAction SilentlyContinue"
+[2026-07-19T09:29:03.699Z] [SUCCESS] Geçici sistem dosyaları başarıyla temizlendi.
+[2026-07-19T09:29:05.033Z] [INFO] DISM Sistem imaj onarımı başlatılıyor. Lütfen pencereyi kapatmayın...
+[2026-07-19T09:29:05.034Z] [INFO] İşlem başlatılıyor: DISM /Online /Cleanup-Image /RestoreHealth
+[2026-07-19T09:29:05.034Z] [COMMAND] Sistem Komutu Tetiklendi: DISM /Online /Cleanup-Image /RestoreHealth
+[2026-07-19T09:29:05.168Z] [ERROR] HATA - Komut: DISM /Online /Cleanup-Image /RestoreHealth | Sebep: Command failed: DISM /Online /Cleanup-Image /RestoreHealth
+
+[2026-07-19T09:29:05.170Z] [ERROR] DISM onarım hatası: Command failed: DISM /Online /Cleanup-Image /RestoreHealth
+
+[2026-07-19T09:29:07.752Z] [INFO] İşlem başlatılıyor: taskmgr
+[2026-07-19T09:29:07.753Z] [COMMAND] Sistem Komutu Tetiklendi: taskmgr
+[2026-07-19T09:29:09.847Z] [SUCCESS] BAŞARILI - Komut: taskmgr
+[2026-07-19T09:29:09.849Z] [SUCCESS] Görev Yöneticisi başlatıldı.
+[2026-07-19T09:37:18.651Z] [WARNING] electron-updater yüklenmemiş veya yüklenirken hata oluştu: Cannot find module 'electron-updater'
+Require stack:
+- C:\Users\emira\Desktop\RhemeSetup-v5\main.js
+[2026-07-19T09:37:19.173Z] [INFO] RhemeSetup Başlatıldı.
+[2026-07-19T09:41:34.793Z] [WARNING] electron-updater yüklenmemiş veya yüklenirken hata oluştu: Cannot find module 'electron-updater'
+Require stack:
+- C:\Users\emira\Desktop\RhemeSetup-v5\main.js
+[2026-07-19T09:41:35.345Z] [INFO] RhemeSetup Başlatıldı.
+[2026-07-19T09:42:48.246Z] [WARNING] electron-updater yüklenmemiş veya yüklenirken hata oluştu: Cannot find module 'electron-updater'
+Require stack:
+- C:\Users\emira\Desktop\RhemeSetup-v5\main.js
+[2026-07-19T09:42:48.631Z] [INFO] RhemeSetup Başlatıldı.
+[2026-07-19T09:45:36.788Z] [WARNING] electron-updater yüklenmemiş veya yüklenirken hata oluştu: Cannot find module 'electron-updater'
+Require stack:
+- C:\Users\emira\Desktop\RhemeSetup-v5\main.js
+[2026-07-19T09:45:37.342Z] [INFO] RhemeSetup Başlatıldı.
+[2026-07-19T09:46:10.616Z] [WARNING] electron-updater yüklenmemiş veya yüklenirken hata oluştu: Cannot find module 'electron-updater'
+Require stack:
+- C:\Users\emira\Desktop\RhemeSetup-v5\main.js
+[2026-07-19T09:46:10.976Z] [INFO] RhemeSetup Başlatıldı.
+[2026-07-19T10:41:23.996Z] [WARNING] electron-updater yüklenmemiş veya yüklenirken hata oluştu: Cannot find module 'electron-updater'
+Require stack:
+- C:\Users\emira\Desktop\RhemeSetup-v1\main.js
+[2026-07-19T10:41:24.454Z] [INFO] RhemeSetup Başlatıldı.
+[2026-07-20T11:29:47.155Z] [WARNING] electron-updater yüklenmemiş veya yüklenirken hata oluştu: Cannot find module 'electron-updater'
+Require stack:
+- C:\Users\emira\Desktop\RhemeSetup-v1\main.js
+[2026-07-20T11:29:47.780Z] [INFO] RhemeSetup Başlatıldı.
+[2026-07-20T11:32:34.286Z] [WARNING] electron-updater yüklenmemiş veya yüklenirken hata oluştu: Cannot find module 'electron-updater'
+Require stack:
+- C:\Users\emira\Desktop\RhemeSetup-v1\main.js
+[2026-07-20T11:32:35.027Z] [INFO] RhemeSetup Başlatıldı.
+[2026-07-20T11:34:11.519Z] [INFO] Toplu kurulum başlatıldı. Toplam seçilen uygulama sayısı: 1
+[2026-07-20T11:34:11.520Z] [INFO] Kurulum Başlatıldı: Brave.Brave (1/1)...
+[2026-07-20T11:34:11.522Z] [COMMAND] Sistem Komutu Tetiklendi: winget install --id "Brave.Brave" --silent --accept-source-agreements --accept-package-agreements
+[2026-07-20T11:38:32.973Z] [WARNING] electron-updater yüklenmemiş veya yüklenirken hata oluştu: Cannot find module 'electron-updater'
+Require stack:
+- C:\Users\emira\Desktop\RhemeSetup-v1\main.js
+[2026-07-20T11:38:33.482Z] [INFO] RhemeSetup Başlatıldı.
+[2026-07-20T11:38:44.463Z] [INFO] Toplu kaldırma işlemi başlatıldı. Toplam seçilen uygulama sayısı: 1
+[2026-07-20T11:38:44.466Z] [INFO] Kaldırma İşlemi Başlatıldı: Brave.Brave (1/1)...
+[2026-07-20T11:38:44.468Z] [COMMAND] Sistem Komutu Tetiklendi: winget uninstall --id "Brave.Brave" --silent
+[2026-07-20T11:38:51.108Z] [INFO] Toplu kaldırma işlemi başlatıldı. Toplam seçilen uygulama sayısı: 1
+[2026-07-20T11:38:51.111Z] [INFO] Kaldırma İşlemi Başlatıldı: Brave.Brave (1/1)...
+[2026-07-20T11:38:51.112Z] [COMMAND] Sistem Komutu Tetiklendi: winget uninstall --id "Brave.Brave" --silent
+[2026-07-20T11:38:52.201Z] [ERROR] HATA - Komut: winget uninstall --id "Brave.Brave" --silent | Sebep: Command failed: chcp 65001 > nul && winget uninstall --id "Brave.Brave" --silent
+
+[2026-07-20T11:38:54.552Z] [ERROR] HATA - Komut: winget uninstall --id "Brave.Brave" --silent | Sebep: Command failed: chcp 65001 > nul && winget uninstall --id "Brave.Brave" --silent
+
+[2026-07-20T11:38:54.560Z] [ERROR] KALDIRMA HATASI (Brave.Brave): Program kaldırılamadı veya bulunamadı. Hata: Command failed: chcp 65001 > nul && winget uninstall --id "Brave.Brave" --silent
+
+[2026-07-20T11:38:54.565Z] [SUCCESS] Toplu kaldırma işlemleri tamamlandı.
+[2026-07-20T11:40:58.548Z] [WARNING] electron-updater yüklenmemiş veya yüklenirken hata oluştu: Cannot find module 'electron-updater'
+Require stack:
+- C:\Users\emira\Desktop\RhemeSetup-v1\main.js
+[2026-07-20T11:40:58.952Z] [INFO] RhemeSetup Başlatıldı.
+[2026-07-20T11:42:06.706Z] [INFO] Sistem Analizi (Quick Scan) başlatılıyor...
+[2026-07-20T11:42:06.708Z] [COMMAND] Sistem Komutu Tetiklendi: winget list --id "Microsoft.VCRedist.2015+.x64"
+[2026-07-20T11:42:09.165Z] [SUCCESS] BAŞARILI - Komut: winget list --id "Microsoft.VCRedist.2015+.x64"
+[2026-07-20T11:42:09.170Z] [SUCCESS] [YÜKLÜ] Visual C++ 2015-2022 Redistributable (x64) sistemde bulundu.
+[2026-07-20T11:42:09.172Z] [COMMAND] Sistem Komutu Tetiklendi: winget list --id "Microsoft.VCRedist.2015+.x86"
+[2026-07-20T11:42:11.171Z] [ERROR] HATA - Komut: winget list --id "Microsoft.VCRedist.2015+.x86" | Sebep: Command failed: chcp 65001 > nul && winget list --id "Microsoft.VCRedist.2015+.x86"
+
+[2026-07-20T11:42:11.175Z] [WARNING] [EKSİK] Visual C++ 2015-2022 Redistributable (x86) sistemde bulunamadı!
+[2026-07-20T11:42:11.176Z] [COMMAND] Sistem Komutu Tetiklendi: winget list --id "Microsoft.DotNet.DesktopRuntime.8"
+[2026-07-20T11:42:13.432Z] [ERROR] HATA - Komut: winget list --id "Microsoft.DotNet.DesktopRuntime.8" | Sebep: Command failed: chcp 65001 > nul && winget list --id "Microsoft.DotNet.DesktopRuntime.8"
+
+[2026-07-20T11:42:13.439Z] [WARNING] [EKSİK] .NET Desktop Runtime 8.0 (x64) sistemde bulunamadı!
+[2026-07-20T11:42:13.441Z] [COMMAND] Sistem Komutu Tetiklendi: winget list --id "Microsoft.DotNet.DesktopRuntime.6"
+[2026-07-20T11:42:15.762Z] [ERROR] HATA - Komut: winget list --id "Microsoft.DotNet.DesktopRuntime.6" | Sebep: Command failed: chcp 65001 > nul && winget list --id "Microsoft.DotNet.DesktopRuntime.6"
+
+[2026-07-20T11:42:15.764Z] [WARNING] [EKSİK] .NET Desktop Runtime 6.0 (x64) sistemde bulunamadı!
+[2026-07-20T11:42:15.766Z] [COMMAND] Sistem Komutu Tetiklendi: winget list --id "Microsoft.DirectX"
+[2026-07-20T11:42:18.210Z] [ERROR] HATA - Komut: winget list --id "Microsoft.DirectX" | Sebep: Command failed: chcp 65001 > nul && winget list --id "Microsoft.DirectX"
+
+[2026-07-20T11:42:18.214Z] [WARNING] [EKSİK] DirectX Runtime Kütüphaneleri sistemde bulunamadı!
+[2026-07-20T11:42:18.216Z] [SUCCESS] Sistem Analizi tamamlandı.
+[2026-07-20T11:42:19.174Z] [INFO] İşlem başlatılıyor: taskmgr
+[2026-07-20T11:42:19.175Z] [COMMAND] Sistem Komutu Tetiklendi: taskmgr
+[2026-07-20T11:42:19.921Z] [INFO] İşlem başlatılıyor: taskmgr
+[2026-07-20T11:42:19.923Z] [COMMAND] Sistem Komutu Tetiklendi: taskmgr
+[2026-07-20T11:42:21.236Z] [SUCCESS] BAŞARILI - Komut: taskmgr
+[2026-07-20T11:42:21.239Z] [SUCCESS] Görev Yöneticisi başlatıldı.
+[2026-07-20T11:42:22.805Z] [SUCCESS] BAŞARILI - Komut: taskmgr
+[2026-07-20T11:42:22.808Z] [SUCCESS] Görev Yöneticisi başlatıldı.
+[2026-07-20T11:42:23.383Z] [INFO] İşlem başlatılıyor: taskmgr
+[2026-07-20T11:42:23.384Z] [COMMAND] Sistem Komutu Tetiklendi: taskmgr
+[2026-07-20T11:42:25.812Z] [SUCCESS] BAŞARILI - Komut: taskmgr
+[2026-07-20T11:42:25.815Z] [SUCCESS] Görev Yöneticisi başlatıldı.
+[2026-07-20T11:42:32.999Z] [INFO] Geçici dosyalar temizleniyor (Yönetici İzni Gerekebilir)...
+[2026-07-20T11:42:33.001Z] [INFO] İşlem başlatılıyor: powershell -Command "Start-Process powershell -ArgumentList '-NoProfile -Command Remove-Item -Path ''$env:TEMP/*' -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path ''C:/Windows/Temp/*' -Recurse -Force -ErrorAction SilentlyContinue' -Verb RunAs -Wait"
+[2026-07-20T11:42:33.001Z] [COMMAND] Sistem Komutu Tetiklendi: powershell -Command "Start-Process powershell -ArgumentList '-NoProfile -Command Remove-Item -Path ''$env:TEMP/*' -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path ''C:/Windows/Temp/*' -Recurse -Force -ErrorAction SilentlyContinue' -Verb RunAs -Wait"
+[2026-07-20T11:42:36.223Z] [INFO] SFC Taraması başlatılıyor (Yönetici İzni Gerekebilir)...
+[2026-07-20T11:42:36.224Z] [INFO] İşlem başlatılıyor: powershell -Command "Start-Process cmd -ArgumentList '/k sfc /scannow' -Verb RunAs"
+[2026-07-20T11:42:36.225Z] [COMMAND] Sistem Komutu Tetiklendi: powershell -Command "Start-Process cmd -ArgumentList '/k sfc /scannow' -Verb RunAs"
+[2026-07-20T11:42:37.985Z] [ERROR] HATA - Komut: powershell -Command "Start-Process powershell -ArgumentList '-NoProfile -Command Remove-Item -Path ''$env:TEMP/*' -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path ''C:/Windows/Temp/*' -Recurse -Force -ErrorAction SilentlyContinue' -Verb RunAs -Wait" | Sebep: Command failed: chcp 65001 > nul && powershell -Command "Start-Process powershell -ArgumentList '-NoProfile -Command Remove-Item -Path ''$env:TEMP/*' -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path ''C:/Windows/Temp/*' -Recurse -Force -ErrorAction SilentlyContinue' -Verb RunAs -Wait"
+Start-Process : A parameter cannot be found that matches parameter name 'Recurse'.
+At line:1 char:94
++ ... -NoProfile -Command Remove-Item -Path ''$env:TEMP/*' -Recurse -Force  ...
++                                                          ~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Start-Process], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.StartProcessCommand
+ 
+Remove-Item : Cannot bind argument to parameter 'Path' because it is an empty string.
+At line:1 char:159
++ ... se -Force -ErrorAction SilentlyContinue; Remove-Item -Path ''C:/Windo ...
++                                                                ~~
+    + CategoryInfo          : InvalidData: (:) [Remove-Item], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorEmptyStringNotAllowed,Microsoft.PowerShell.Commands.Remo 
+   veItemCommand
+ 
+
+[2026-07-20T11:42:37.988Z] [ERROR] Temizlik hatası veya kullanıcı izni reddetti: Command failed: chcp 65001 > nul && powershell -Command "Start-Process powershell -ArgumentList '-NoProfile -Command Remove-Item -Path ''$env:TEMP/*' -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path ''C:/Windows/Temp/*' -Recurse -Force -ErrorAction SilentlyContinue' -Verb RunAs -Wait"
+Start-Process : A parameter cannot be found that matches parameter name 'Recurse'.
+At line:1 char:94
++ ... -NoProfile -Command Remove-Item -Path ''$env:TEMP/*' -Recurse -Force  ...
++                                                          ~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Start-Process], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.StartProcessCommand
+ 
+Remove-Item : Cannot bind argument to parameter 'Path' because it is an empty string.
+At line:1 char:159
++ ... se -Force -ErrorAction SilentlyContinue; Remove-Item -Path ''C:/Windo ...
++                                                                ~~
+    + CategoryInfo          : InvalidData: (:) [Remove-Item], ParameterBindingValidationException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorEmptyStringNotAllowed,Microsoft.PowerShell.Commands.Remo 
+   veItemCommand
+ 
+
+[2026-07-20T11:42:42.569Z] [ERROR] HATA - Komut: powershell -Command "Start-Process cmd -ArgumentList '/k sfc /scannow' -Verb RunAs" | Sebep: Command failed: chcp 65001 > nul && powershell -Command "Start-Process cmd -ArgumentList '/k sfc /scannow' -Verb RunAs"
+Start-Process : This command cannot be run due to the error: İşlem kullanıcı tarafından iptal edildi.
+At line:1 char:1
++ Start-Process cmd -ArgumentList '/k sfc /scannow' -Verb RunAs
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Start-Process], InvalidOperationException
+    + FullyQualifiedErrorId : InvalidOperationException,Microsoft.PowerShell.Commands.StartProcessCommand
+ 
+
+[2026-07-20T11:42:42.572Z] [ERROR] SFC başlatma hatası veya kullanıcı izni reddetti: Command failed: chcp 65001 > nul && powershell -Command "Start-Process cmd -ArgumentList '/k sfc /scannow' -Verb RunAs"
+Start-Process : This command cannot be run due to the error: İşlem kullanıcı tarafından iptal edildi.
+At line:1 char:1
++ Start-Process cmd -ArgumentList '/k sfc /scannow' -Verb RunAs
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Start-Process], InvalidOperationException
+    + FullyQualifiedErrorId : InvalidOperationException,Microsoft.PowerShell.Commands.StartProcessCommand
+ 
+
+[2026-07-20T11:49:39.847Z] [WARNING] electron-updater yüklenmemiş veya yüklenirken hata oluştu: Cannot find module 'electron-updater'
+Require stack:
+- C:\Users\emira\Desktop\RhemeSetup-v1\main.js
+[2026-07-20T11:49:40.156Z] [INFO] RhemeSetup Başlatıldı.
+[2026-07-20T11:50:52.781Z] [INFO] Toplu kaldırma işlemi başlatıldı. Toplam seçilen uygulama sayısı: 1
+[2026-07-20T11:50:52.784Z] [INFO] Kaldırma İşlemi Başlatıldı: Microsoft.Skype (1/1)...
+[2026-07-20T11:50:52.786Z] [COMMAND] Sistem Komutu Tetiklendi: winget uninstall --id "Microsoft.Skype" --silent
+[2026-07-20T11:51:00.632Z] [ERROR] HATA - Komut: winget uninstall --id "Microsoft.Skype" --silent | Sebep: Command failed: chcp 65001 > nul && winget uninstall --id "Microsoft.Skype" --silent
+
+[2026-07-20T11:51:00.641Z] [ERROR] KALDIRMA HATASI (Microsoft.Skype): Program kaldırılamadı veya bulunamadı. Hata: Command failed: chcp 65001 > nul && winget uninstall --id "Microsoft.Skype" --silent
+
+[2026-07-20T11:51:00.646Z] [SUCCESS] Toplu kaldırma işlemleri tamamlandı.
+[2026-07-20T11:56:21.497Z] [WARNING] electron-updater yüklenmemiş veya yüklenirken hata oluştu: Cannot find module 'electron-updater'
+Require stack:
+- C:\Users\emira\Desktop\RhemeSetup-v1\main.js
+[2026-07-20T11:56:21.822Z] [INFO] RhemeSetup Başlatıldı.
+[2026-07-20T11:58:49.844Z] [WARNING] electron-updater yüklenmemiş veya yüklenirken hata oluştu: Cannot find module 'electron-updater'
+Require stack:
+- C:\Users\emira\Desktop\RhemeSetup-v1\main.js
+[2026-07-20T11:58:50.171Z] [INFO] RhemeSetup Başlatıldı.
+[2026-07-20T12:01:07.621Z] [WARNING] electron-updater yüklenmemiş veya yüklenirken hata oluştu: Cannot find module 'electron-updater'
+Require stack:
+- C:\Users\emira\Desktop\RhemeSetup-v1\main.js
+[2026-07-20T12:01:07.926Z] [INFO] RhemeSetup Başlatıldı.
