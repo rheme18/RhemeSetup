@@ -9,6 +9,8 @@ RhemeSetup is a Windows desktop toolkit for setting up a fresh system. It brings
 
 The interface supports Turkish and English, light and dark appearance, and five accent colors. Preferences are saved on the current Windows user profile.
 
+<img width="1366" height="768" alt="Ekran Görüntüsü (1)" src="https://github.com/user-attachments/assets/135598c1-2ffe-44c1-80cc-ec3daacc6bb1" />
+
 ## Architecture
 
 - Electron and Chromium render the HTML, CSS, and vanilla JavaScript interface.
@@ -22,6 +24,8 @@ The interface supports Turkish and English, light and dark appearance, and five 
 3. Run `npm start`.
 
 System maintenance actions may require administrator rights. Review each selected action before applying it.
+
+<img width="1366" height="768" alt="Ekran Görüntüsü (2)" src="https://github.com/user-attachments/assets/1100fa1a-24ee-4f25-acde-c71f84999140" />
 
 ## Packaging
 
