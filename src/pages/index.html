@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme-mode="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RhemeSetup 2.1 - Setup & System Optimization</title>
+    <!-- Google Fonts: Outfit & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sürüklenebilir Başlık Çubuğu (Windows Fluent Titlebar) -->
+    <div class="title-bar">
+        <div class="app-title">
+            <i class="fa-solid fa-wand-magic-sparkles logo-icon"></i>
+            <span>RhemeSetup 2.1</span>
+        </div>
+        <div class="controls">
+            <button id="btn-min" title="Simge Durumuna Küçült"><i class="fa-solid fa-minus"></i></button>
+            <button id="btn-max" title="Ekranı Kapla"><i class="fa-solid fa-square"></i></button>
+            <button id="btn-close" class="close-btn" title="Kapat"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sol Kenar Çubuğu (Sidebar) -->
+        <aside class="sidebar">
+            <div class="brand">
+                <h2>RHEMESETUP</h2>
+                <span>SETUP & OPTIMIZE</span>
+            </div>
+            
+            <!-- Renk Teması Seçici (Accent Selector) -->
+            <div class="accent-picker" aria-label="Accent color">
+                <span class="theme-dot blue active" data-theme="blue" title="Electric Blue"></span>
+                <span class="theme-dot purple" data-theme="purple" title="Purple Glow"></span>
+                <span class="theme-dot green" data-theme="green" title="Emerald Green"></span>
+                <span class="theme-dot orange" data-theme="orange" title="Sunset Orange"></span>
+                <span class="theme-dot pink" data-theme="pink" title="Cyberpunk Pink"></span>
+            </div>
+            <div class="locale-picker" aria-label="Language">
+                <button type="button" class="locale-btn" data-language="tr" aria-pressed="true">TR</button>
+                <button type="button" class="locale-btn" data-language="en" aria-pressed="false">EN</button>
+            </div>
+            
+            <nav class="navbar">
+                <ul>
+                    <li class="nav-item active" data-target="library" data-i18n="navLibrary">
+                        <i class="fa-solid fa-cubes"></i> Uygulama Kütüphanesi
+                    </li>
+                    <li class="nav-item" data-target="quick-scan" data-i18n="navScan">
+                        <i class="fa-solid fa-shield-halved"></i> Sistem Analizi
+                    </li>
+                    <li class="nav-item" data-target="system-tools" data-i18n="navTools">
+                        <i class="fa-solid fa-sliders"></i> Sistem Utilitiesı
+                    </li>
+                    <li class="nav-item" data-target="tweaks" data-i18n="navTweaks">
+                        <i class="fa-solid fa-gauge-high"></i> Performans & İnce Ayar
+                    </li>
+                    <li class="nav-item" data-target="presets" data-i18n="navPresets">
+                        <i class="fa-solid fa-cloud-arrow-down"></i> Paket Yönetimi
+                    </li>
+                    <li class="nav-item" data-target="history" data-i18n="navHistory">
+                        <i class="fa-solid fa-terminal"></i> İşlem Günlüğü
+                    </li>
+					<li class="nav-item" data-target="settings" data-i18n="navSettings">
+                        <i class="fa-solid fa-gear"></i> Ayarlar & Otomasyon
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Donanım İzleme Paneli (Resource Widget) -->
+            <div class="system-monitor">
+                <div class="monitor-title" data-i18n="monitorTitle">
+                    <i class="fa-solid fa-microchip"></i> Sistem Durumu
+                </div>
+                <div class="monitor-item">
+                    <div class="monitor-label">
+                        <span data-i18n="cpuUsage">CPU Kullanımı</span>
+                        <span id="cpu-val">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="cpu-bar" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="monitor-item">
+                    <div class="monitor-label">
+                        <span data-i18n="ramUsage">RAM Kullanımı</span>
+                        <span id="ram-val">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="ram-bar" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="sub-detail" id="ram-detail">0 GB / 0 GB</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Sağ Ana İçerik Alanı -->
+        <main class="content">
+            <!-- SAYFA 1: UYGULAMA KÜTÜPHANESİ -->
+            <section id="library" class="page active">
+                <div class="page-header">
+                    <div>
+                        <h1 data-i18n="page_0">Uygulama Kütüphanesi</h1>
+                        <p data-i18n="page_1">Sisteminiz için gerekli tüm popüler yazılımları seçip tek tıkla kurun veya kaldırın.</p>
+                    </div>
+                    <!-- Updateme kontrol butonu -->
+                    <button id="btn-update-check" class="btn btn-secondary">
+                        <i class="fa-solid fa-rotate"></i> Updateme Denetle
+                    </button>
+                </div>
+
+                <!-- Arama ve Kategori Filtreleme -->
+                <div class="library-controls">
+                    <div class="search-wrapper">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="app-search" data-i18n-placeholder="page_3" placeholder="Kütüphanede uygulama ara...">
+                    </div>
+                    <div class="category-filters" id="category-filters">
+                        <button class="filter-btn active" data-category="all" data-i18n="page_4">Tümü</button>
+                        <!-- Kategoriler dinamik olarak yüklenecek -->
+                    </div>
+                </div>
+
+                <!-- Seçim ve Toplu İşlem Çubuğu -->
+                <div class="action-bar">
+                    <div class="select-info">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="select-all-checkbox">
+                            <span class="checkmark"></span>
+                            <span data-i18n="selectAll">Tümünü Seç</span>
+                        </label>
+                        <span class="divider">|</span>
+                        <span id="selected-count">0 uygulama seçildi</span>
+                    </div>
+                    <div class="batch-buttons">
+                        <button id="install-selected-btn" class="btn btn-primary disabled">
+                            <i class="fa-solid fa-download"></i> <span data-i18n="page_5">Seçilenleri Kur</span>
+                        </button>
+                        <button id="uninstall-selected-btn" class="btn btn-danger disabled">
+                            <i class="fa-solid fa-trash-can"></i> <span data-i18n="page_6">Seçilenleri Kaldır</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Uygulama Kartları Izgarası -->
+                <div id="app-grid" class="app-grid">
+                    <!-- Kartlar JS ile doldurulacak -->
+                </div>
+            </section>
+
+            <!-- SAYFA 2: SİSTEM ANALİZİ (QUICK SCAN) -->
+            <section id="quick-scan" class="page">
+                <div class="page-header">
+                    <div>
+                        <h1 data-i18n="page_7">Sistem Analizi</h1>
+                        <p data-i18n="page_8">Format sonrası sisteminizin düzgün çalışması ve oyun performansı için gerekli kritik çalışma kütüphanelerini denetleyin.</p>
+                    </div>
+                </div>
+
+                <div class="scan-container">
+                    <div class="scan-card">
+                        <div class="scan-meta">
+                            <h3 data-i18n="scanTitle">Kritik Çalışma Zamanı Kütüphaneleri (Runtimes)</h3>
+                            <p data-i18n="scanDescription">Eksik kütüphaneler DLL hatalarına veya uygulamaların açılmamasına neden olabilir.</p>
+                        </div>
+                        <button id="start-scan-btn" class="btn btn-primary">
+                            <i class="fa-solid fa-radar"></i> <span data-i18n="scanButton">Taramayı Başlat</span>
+                        </button>
+                    </div>
+
+                    <div class="scan-results-wrapper">
+                        <ul class="scan-list" id="scan-list">
+                            <li class="scan-item empty-state">
+                                <i class="fa-solid fa-info-circle"></i>
+                                <span data-i18n="scanHint">Taramayı başlatmak için yukarıdaki butona tıklayın.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Sistem Özellikleri Paneli -->
+                <div class="system-specs-container">
+                    <h3 class="specs-title"><i class="fa-solid fa-circle-info"></i> Sistem Donanım Bilgileri</h3>
+                    <div class="specs-grid" id="specs-grid">
+                        <div class="spec-card">
+                            <div class="spec-icon"><i class="fa-solid fa-microchip"></i></div>
+                            <div class="spec-info">
+                                <span>İşlemci (CPU)</span>
+                                <h4 id="spec-cpu" data-i18n="page_10">Sorgulanıyor...</h4>
+                            </div>
+                        </div>
+                        <div class="spec-card">
+                            <div class="spec-icon"><i class="fa-solid fa-gamepad"></i></div>
+                            <div class="spec-info">
+                                <span>Ekran Kartı (GPU)</span>
+                                <h4 id="spec-gpu">Sorgulanıyor...</h4>
+                            </div>
+                        </div>
+                        <div class="spec-card">
+                            <div class="spec-icon"><i class="fa-solid fa-memory"></i></div>
+                            <div class="spec-info">
+                                <span>Sistem Belleği</span>
+                                <h4 id="spec-ram">Sorgulanıyor...</h4>
+                            </div>
+                        </div>
+                        <div class="spec-card">
+                            <div class="spec-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                            <div class="spec-info">
+                                <span>İşletim Sistemi</span>
+                                <h4 id="spec-os">Sorgulanıyor...</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SAYFA 3: SİSTEM ARAÇLARI -->
+            <section id="system-tools" class="page">
+                <div class="page-header">
+                    <div>
+                        <h1 data-i18n="page_11">Sistem Optimizasyon Utilitiesı</h1>
+                        <p data-i18n="page_12">Windows performansını artıracak profesyonel bakım işlemlerini ve temizlik araçlarını çalıştırın.</p>
+                    </div>
+                </div>
+
+                <div class="tools-grid">
+                    <div class="tool-card" onclick="SystemService.cleanTemp()">
+                        <div class="tool-icon"><i class="fa-solid fa-broom"></i></div>
+                        <div class="tool-info">
+                            <h3>Junk File Cleanup</h3>
+                            <p>Geçici sistem ve kullanıcı dosyalarını (%TEMP%) silerek yer açar.</p>
+                        </div>
+                    </div>
+                    <div class="tool-card" onclick="SystemService.flushDNS()">
+                        <div class="tool-icon"><i class="fa-solid fa-network-wired"></i></div>
+                        <div class="tool-info">
+                            <h3>DNS and Network Reset</h3>
+                            <p>DNS önbelleğini sıfırlar, Winsock ayarlarını yenileyerek ağ hatalarını düzeltir.</p>
+                        </div>
+                    </div>
+                    <div class="tool-card" onclick="SystemService.runSfc()">
+                        <div class="tool-icon"><i class="fa-solid fa-shield-virus"></i></div>
+                        <div class="tool-info">
+                            <h3>SFC /Scannow Taraması</h3>
+                            <p>Windows sistem dosyalarını tarar ve bozuk olanları otomatik olarak onarır.</p>
+                        </div>
+                    </div>
+                    <div class="tool-card" onclick="SystemService.runDism()">
+                        <div class="tool-icon"><i class="fa-solid fa-toolbox"></i></div>
+                        <div class="tool-info">
+                            <h3>DISM İmaj Onarımı</h3>
+                            <p>Windows sistem imaj deposunu internet üzerinden onarır ve yapılandırır.</p>
+                        </div>
+                    </div>
+                    <div class="tool-card" onclick="SystemService.enableUltimatePerformance()">
+                        <div class="tool-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <div class="tool-info">
+                            <h3>Nihai Performans Planı</h3>
+                            <p>Windows 10/11 gizli "Nihai Performans" güç şemasını aktifleştirir.</p>
+                        </div>
+                    </div>
+                    <div class="tool-card" onclick="SystemService.openTaskManager()">
+                        <div class="tool-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <div class="tool-info">
+                            <h3>Task Manager</h3>
+                            <p>Sistem kaynaklarını anlık izlemek için Windows Task Managerni açar.</p>
+                        </div>
+                    </div>
+                    <div class="tool-card" onclick="SystemService.runWingetRepair()">
+                        <div class="tool-icon"><i class="fa-solid fa-notes-medical"></i></div>
+                        <div class="tool-info">
+                            <h3>Winget Havuzunu Onar (Doctor)</h3>
+                            <p>Winget kaynak havuzunu sıfırlayıp zorla günceller, kurulum hatalarını giderir.</p>
+                        </div>
+                    </div>
+                    <div class="tool-card" onclick="SystemService.runDriverUpdate()">
+                        <div class="tool-icon"><i class="fa-solid fa-rotate"></i></div>
+                        <div class="tool-info">
+                            <h3>Donanım Sürücülerini Tara</h3>
+                            <p>Sistemdeki eksik veya güncel olmayan aygıt sürücülerini bulur.</p>
+                        </div>
+                    </div>
+                    <div class="tool-card full-width" onclick="SystemService.updateWinget()">
+                        <div class="tool-icon"><i class="fa-solid fa-circle-up"></i></div>
+                        <div class="tool-info">
+                            <h3>Sistemdeki Tüm Programları Update</h3>
+                            <p>Winget aracılığıyla kurulmuş tüm güncel yazılımları tespit edip sessizce yükseltir.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SAYFA: PERFORMANCE & TWEAKS -->
+<section id="tweaks" class="page">
+    <div class="page-header">
+        <div>
+            <h1 data-i18n="page_13">Performans & İnce Ayarlar</h1>
+            <p>Windows'u post-format optimize etmek, gereksiz arka plan servislerini kapatmak ve gizliliğinizi korumak için ince ayarları uygulayın.</p>
+        </div>
+        <button id="apply-tweaks-btn" class="btn btn-primary" onclick="applySelectedTweaks()">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Seçili İnce Ayarları Uygula
+        </button>
+    </div>
+
+    <div class="tweaks-container">
+        <!-- KATEGORİ 1: GİZLİLİK VE SİSTEM TEMİZLİĞİ -->
+        <div class="tweak-category">
+            <h2><i class="fa-solid fa-user-shield"></i> Gizlilik & Telemetri</h2>
+            <div class="tweak-grid">
+                <div class="tweak-item-card">
+                    <div class="tweak-info">
+                        <h3>Başlat Menüsü Bing Aramalarını Kapat</h3>
+                        <p>Başlat menüsünde arama yaparken internet sonuçlarının yüklenmesini engeller, aramayı hızlandırır.</p>
+                    </div>
+                    <label class="fluent-switch">
+                        <input type="checkbox" id="tweak-bing">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="tweak-item-card">
+                    <div class="tweak-info">
+                        <h3>Windows Telemetri ve İzlemeyi Devre Dışı Bırak</h3>
+                        <p>Arka planda Microsoft veri toplama servislerini kapatarak işlemci ve bellek yükünü azaltır.</p>
+                    </div>
+                    <label class="fluent-switch">
+                        <input type="checkbox" id="tweak-telemetry">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="tweak-item-card">
+                    <div class="tweak-info">
+                        <h3>Windows Bildirimlerini ve Reklam Önerilerini Kapat</h3>
+                        <p>Kilit ekranı önerileri, başlangıç ipuçları ve rahatsız edici Windows bildirimlerini devre dışı bırakır.</p>
+                    </div>
+                    <label class="fluent-switch">
+                        <input type="checkbox" id="tweak-ads">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="tweak-item-card">
+                    <div class="tweak-info">
+                        <h3>Cortana ve Copilot Asistanlarını Kapat</h3>
+                        <p>Arka planda gereksiz kaynak tüketen Cortana ve Windows 11 Copilot yapay zeka servislerini kapatır.</p>
+                    </div>
+                    <label class="fluent-switch">
+                        <input type="checkbox" id="tweak-cortana">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATEGORİ 2: OYUN & PERFORMANS -->
+        <div class="tweak-category">
+            <h2><i class="fa-solid fa-gauge-high"></i> Performans & Games</h2>
+            <div class="tweak-grid">
+                <div class="tweak-item-card">
+                    <div class="tweak-info">
+                        <h3>Xbox Game DVR ve Games Çubuğunu Kapat</h3>
+                        <p>Games içi otomatik arka plan kayıt özelliğini kapatarak oyunlarda FPS dalgalanmasını önler.</p>
+                    </div>
+                    <label class="fluent-switch">
+                        <input type="checkbox" id="tweak-gamedvr">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="tweak-item-card">
+                    <div class="tweak-info">
+                        <h3>Tam Ekran İyileştirmelerini Devre Dışı Bırak</h3>
+                        <p>Gameslarda girdi gecikmesini (input lag) düşürmek için Windows zorunlu tam ekran iyileştirmelerini kapatır.</p>
+                    </div>
+                    <label class="fluent-switch">
+                        <input type="checkbox" id="tweak-fullscreenopt">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="tweak-item-card">
+                    <div class="tweak-info">
+                        <h3>Windows Update Sürücü Updatemelerini Engelle</h3>
+                        <p>Windows Update'in ekran kartı ve sistem donanımlarına otomatik eski sürücü kurmasını engeller.</p>
+                    </div>
+                    <label class="fluent-switch">
+                        <input type="checkbox" id="tweak-nodriverupdate">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATEGORİ 3: KULLANILABİLİRLİK & DEBLOAT -->
+        <div class="tweak-category">
+            <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Windows Sistem İnce Ayarları</h2>
+            <div class="tweak-grid">
+                <div class="tweak-item-card">
+                    <div class="tweak-info">
+                        <h3>Windows 11 Klasik Sağ Tık Menüsünü Geri Getir</h3>
+                        <p>"Daha fazla seçenek göster" menüsünü kaldırıp eski hızlı Windows 10 sağ tık menüsünü aktif eder.</p>
+                    </div>
+                    <label class="fluent-switch">
+                        <input type="checkbox" id="tweak-classiccontext">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="tweak-item-card">
+                    <div class="tweak-info">
+                        <h3>OneDrive'ı Tamamen Kaldır</h3>
+                        <p>OneDrive'ı sistemden siler ve Dosya Gezgini gezinme bölmesinden simgesini temizler.</p>
+                    </div>
+                    <label class="fluent-switch">
+                        <input type="checkbox" id="tweak-onedrive">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="tweak-item-card">
+                    <div class="tweak-info">
+                        <h3>Gömülü Bloatware Uygulamalarını Sil</h3>
+                        <p>Candy Crush, Solitaire, Weather, News gibi varsayılan Windows AppX paketlerini kaldırır.</p>
+                    </div>
+                    <label class="fluent-switch">
+                        <input type="checkbox" id="tweak-bloatware">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+            <!-- SAYFA 4: BULUT & PRESET YÖNETİMİ -->
+            <section id="presets" class="page">
+                <div class="page-header">
+                    <div>
+                        <h1 data-i18n="page_14">Paket (Preset) Yönetimi</h1>
+                        <p>Kendi özelleştirilmiş kurulum paketlerinizi JSON olarak dışa aktarın veya hazır şablonları içe aktarın.</p>
+                    </div>
+                </div>
+
+                <div class="presets-container">
+                    <div class="preset-box">
+                        <h3>Local Package Actions</h3>
+                        <p>Şu anda seçtiğiniz uygulamaları paket halinde kaydedebilir veya daha önce kaydettiğiniz paketi yükleyebilirsiniz.</p>
+                        <div class="preset-actions">
+                            <button id="export-preset-btn" class="btn btn-primary">
+                                <i class="fa-solid fa-file-export"></i> Mevcut Seçimi Paket Yap (Dışa Aktar)
+                            </button>
+                            <button id="import-preset-btn" class="btn btn-secondary">
+                                <i class="fa-solid fa-file-import"></i> Hazır Paket Yükle (İçe Aktar)
+                            </button>
+                            <input type="file" id="import-file-input" accept=".json" style="display: none;">
+                        </div>
+                    </div>
+
+                    <div class="preset-box">
+                        <h3>Ready-made Setup Presets</h3>
+                        <p>Sistem kullanım amacınıza göre hazırlanmış standart paketleri tek tıklamayla uygulayabilirsiniz.</p>
+                        <div class="quick-presets-grid">
+                            <div class="quick-preset-card" data-preset="basic">
+                                <h4>Temel Kullanıcı Paketi</h4>
+                                <p>Chrome, VLC, Spotify, Discord, 7-Zip ve Acrobat Reader içerir.</p>
+                            </div>
+                            <div class="quick-preset-card" data-preset="developer">
+                                <h4>Yazılımcı Paketi</h4>
+                                <p>VS Code, Python, Node.js, Git, GitHub Desktop, Notepad++ ve Docker içerir.</p>
+                            </div>
+                            <div class="quick-preset-card" data-preset="gamer">
+                                <h4>Gamescu Paketi</h4>
+                                <p>Steam, Epic Games, Riot, Discord ve CPU-Z kütüphanelerini içerir.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SAYFA 5: İŞLEM GÜNLÜĞÜ (LOG CONSOLE) -->
+            <section id="history" class="page">
+                <div class="page-header">
+                    <div>
+                        <h1 data-i18n="page_15">İşlem Günlüğü</h1>
+                        <p>RhemeSetup ile yapılan tüm arka plan işlemlerini ve Winget çıktılarını canlı olarak izleyin.</p>
+                    </div>
+                    <div class="log-actions">
+                        <button id="refresh-logs-btn" class="btn btn-secondary"><i class="fa-solid fa-rotate-right"></i> Refresh</button>
+                        <button id="clear-console-btn" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Clear Console</button>
+                    </div>
+                </div>
+
+                <div class="console-container">
+                    <div class="console-header">
+                        <span><i class="fa-solid fa-circle text-danger"></i> live_terminal.sh</span>
+                        <span>utf-8</span>
+                    </div>
+                    <div id="log-console" class="log-console">
+                        <!-- Log satırları buraya gelecek -->
+                    </div>
+                </div>
+            </section>
+			
+			<!-- SAYFA 6: AYARLAR & OTOMASYON -->
+            <section id="settings" class="page">
+                <div class="page-header">
+                    <div>
+                        <h1 data-i18n="page_16">Ayarlar ve Otomasyon Tercihleri</h1>
+                        <p>RhemeSetup kurulum motorunun davranışlarını, otomasyon kurallarını ve sistem entegrasyonlarını özelleştirin.</p>
+                    </div>
+                    <button id="save-settings-btn" class="btn btn-primary">
+                        <i class="fa-solid fa-floppy-disk"></i> Ayarları Kaydet
+                    </button>
+                </div>
+
+                <div class="settings-container">
+                    <div class="settings-group-card appearance-settings">
+                        <div class="group-header"><i class="fa-solid fa-palette"></i><h3 data-i18n="appearanceTitle">Görünüm ve Dil</h3></div>
+                        <div class="settings-list">
+                            <div class="setting-item">
+                                <div class="setting-info"><h4 data-i18n="languageLabel">Uygulama Dili</h4><p data-i18n="languageDescription">Arayüz dilini seçin.</p></div>
+                                <select id="set-language" class="custom-select" aria-label="Application language">
+                                    <option value="tr">Türkçe</option><option value="en">English</option>
+                                </select>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info"><h4 data-i18n="themeLabel">Görünüm Teması</h4><p data-i18n="themeDescription">Light veya koyu görünümü seçin.</p></div>
+                                <select id="set-theme-mode" class="custom-select" aria-label="Appearance theme">
+                                    <option value="dark" data-i18n="darkTheme">Dark</option><option value="light" data-i18n="lightTheme">Light</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- KATEGORİ 1: KURULUM MOTORU OTOMASYONU -->
+                    <div class="settings-group-card">
+                        <div class="group-header">
+                            <i class="fa-solid fa-robot"></i>
+                            <h3>Kurulum & Winget Motor Otomasyonu</h3>
+                        </div>
+                        <div class="settings-list">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Sessiz / Katılımsız Kurulum (Silent Mode)</h4>
+                                    <p>Uygulamalar kurulurken kurulum pencerelerini (wizard) tamamen gizler (`--silent` parametresi).</p>
+                                </div>
+                                <label class="fluent-switch">
+                                    <input type="checkbox" id="set-silent-mode" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>EULA ve Anlaşmaları Otomatik Kabul Et</h4>
+                                    <p>Paket lisans sözleşmelerini ve kaynak koşullarını onay istemeden otomatik doğrular (`--accept-package-agreements`).</p>
+                                </div>
+                                <label class="fluent-switch">
+                                    <input type="checkbox" id="set-accept-eula" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Mevcut Ayarları ve Kullanıcı Verilerini Koru</h4>
+                                    <p>Updateme ve kaldırma işlemlerinde kullanıcı profil dizinlerini temizlemeden korur.</p>
+                                </div>
+                                <label class="fluent-switch">
+                                    <input type="checkbox" id="set-keep-data" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>İndirme Bağlantı Zaman Aşımı (Timeout)</h4>
+                                    <p>Yavaş bağlantılarda uygulamanın askıda kalmaması için azami bekleme süresi.</p>
+                                </div>
+                                <select id="set-timeout" class="custom-select">
+                                    <option value="60">60 Saniye</option>
+                                    <option value="120" selected>120 Saniye (Varsayılan)</option>
+                                    <option value="300">300 Saniye (5 Dakika)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KATEGORİ 2: SİSTEM & GÜVENLİK OTOMASYONU -->
+                    <div class="settings-group-card">
+                        <div class="group-header">
+                            <i class="fa-solid fa-shield-cat"></i>
+                            <h3>Security & Otomatik Kurtarma</h3>
+                        </div>
+                        <div class="settings-list">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Toplu Kurulum Öncesi Geri Yükleme Noktası Oluştur</h4>
+                                    <p>İşleme başlamadan önce Windows Sistem Geri Yükleme Noktası (System Restore Point) alır.</p>
+                                </div>
+                                <label class="fluent-switch">
+                                    <input type="checkbox" id="set-auto-restore" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Kaldırma İşlemlerinde Yedek Onayı İste</h4>
+                                    <p>Toplu program kaldırma öncesinde kritik kayıt girdilerini yedekleme uyarısı sunar.</p>
+                                </div>
+                                <label class="fluent-switch">
+                                    <input type="checkbox" id="set-uninstall-confirm" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KATEGORİ 3: İŞLEM BİTİŞ OTOMASYONU -->
+                    <div class="settings-group-card">
+                        <div class="group-header">
+                            <i class="fa-solid fa-power-off"></i>
+                            <h3>İşlem Bitiş & Kapanış Eylemleri</h3>
+                        </div>
+                        <div class="settings-list">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>İşlem Bittiğinde Windows Bildirimi Gönder</h4>
+                                    <p>Tüm indirme ve kurulum işlemleri tamamlandığında masaüstü bildirimi ile haber verir.</p>
+                                </div>
+                                <label class="fluent-switch">
+                                    <input type="checkbox" id="set-desktop-notify" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Tüm İşlemler Bittiğinde Otomatik Eylem</h4>
+                                    <p>Seçilen toplu paket kurulumu/güncellemesi bittiğinde sistemin ne yapacağını belirleyin.</p>
+                                </div>
+                                <select id="set-auto-finish" class="custom-select">
+                                    <option value="none" selected>Hiçbir Şey Yapma (Bekle)</option>
+                                    <option value="close">RhemeSetup'ı Kapat</option>
+                                    <option value="reboot">Sistemi Yeniden Başlat (Reboot)</option>
+                                    <option value="shutdown">Bilgisayarı Kapat</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KATEGORİ 4: GÜNLÜK (LOG) & RAPORLAMA -->
+                    <div class="settings-group-card">
+                        <div class="group-header">
+                            <i class="fa-solid fa-file-code"></i>
+                            <h3>Raporlama & Log Otomasyonu</h3>
+                        </div>
+                        <div class="settings-list">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Konsol Çıktılarını Otomatik Metin Dosyasına Kaydet</h4>
+                                    <p>Tüm kurulum loglarını otomatik olarak `logs/rhemesetup_latest.log` dosyasına yazar.</p>
+                                </div>
+                                <label class="fluent-switch">
+                                    <input type="checkbox" id="set-auto-log-save" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- OTOMASYON İŞLEM ÇUBUĞU OVERLAY (Progress Overlay) -->
+    <div id="install-progress-container" class="overlay hidden">
+        <div class="overlay-card progress-card">
+            <h3 id="install-title">Uygulama Kurulum / Kaldırma İşlemi</h3>
+            <p id="install-status-text">Kuruluma başlanıyor...</p>
+            
+            <div class="progress-wrapper">
+                <div class="progress-track large">
+                    <div id="install-progress-bar" class="progress-fill glow" style="width: 0%"></div>
+                </div>
+                <span id="install-progress-percentage">%0</span>
+            </div>
+            
+            <div class="overlay-actions" style="margin-top: 15px; text-align: center;">
+                <button id="btn-cancel-install" class="btn btn-danger" onclick="location.reload()">
+                    <i class="fa-solid fa-xmark"></i> İşlemi İptal Et / Durdur
+                </button>
+            </div>
+
+            <div class="overlay-info" style="margin-top: 15px;">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                İşlem sürerken pencereyi kapatmayın. İptal durumunda mevcut adım tamamlandıktan sonra durdurulacaktır.
+            </div>
+        </div>
+    </div>
+
+    <!-- KALDIRMA ONAY MODALI (Custom Confirm Modal) -->
+    <div id="confirm-modal" class="overlay hidden">
+        <div class="overlay-card confirm-card">
+            <div class="confirm-header">
+                <i class="fa-solid fa-triangle-exclamation warning-icon"></i>
+                <h3>Program Kaldırma Onayı</h3>
+            </div>
+            <div class="confirm-body">
+                <p id="confirm-modal-text">Seçilen uygulamalar sisteminizden kaldırılacaktır. Devam etmek istiyor musunuz?</p>
+            </div>
+            <div class="confirm-actions">
+                <button id="confirm-yes-btn" class="btn btn-danger">Evet, Kaldır</button>
+                <button id="confirm-no-btn" class="btn btn-secondary">İptal Et</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- UYGULAMA UPDATE BİLDİRİMİ MODALI -->
+    <div id="update-modal" class="overlay hidden">
+        <div class="overlay-card confirm-card">
+            <div class="confirm-header">
+                <i class="fa-solid fa-circle-info info-icon"></i>
+                <h3>Uygulama Updatemesi</h3>
+            </div>
+            <div class="confirm-body">
+                <p id="update-modal-text">RhemeSetup için yeni bir güncelleme kontrol ediliyor...</p>
+            </div>
+            <div class="confirm-actions">
+                <button id="update-ok-btn" class="btn btn-primary hidden">Yeniden Başlat ve Kur</button>
+                <button id="update-close-btn" class="btn btn-secondary">Kapat</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scriptleri Yüklüyoruz -->
+    <script src="../data/apps.js"></script>
+    <script src="../services/systemService.js"></script>
+    <script src="../services/wingetService.js"></script>
+	<script src="../js/tweaks.js"></script>
+    <script src="../js/renderer.js"></script>
+</body>
+</html>
